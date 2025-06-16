@@ -2,7 +2,7 @@
 
 My neovim config base on [**LAZY PLUGINS**](https://github.com/folke/lazy.nvim) 
 
-###REQUIREMENTS
+### REQUIREMENTS
 ---
 * Neovim – Download the latest or stable version [from Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md).
 * Git – Required to download some dependencies. [Install Git based on your OS](https://git-scm.com/downloads).
