@@ -10,7 +10,7 @@ My neovim config base on [**LAZY PLUGINS**](https://github.com/folke/lazy.nvim)
 * Nerdfont – Make sure to install a font from [Nerd font](https://www.nerdfonts.com/) for proper icon rendering.
 
 ##### Instruction
----
+
 After you download the nvim folder, copy the files inside the folder and paste them into your Neovim config directory.
 After that, sync it.
 
