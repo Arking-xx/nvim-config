@@ -10,6 +10,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-vsnip",
 			"hrsh7th/vim-vsnip",
+			"robert/tailwindcss-colorizer-cmp.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -37,6 +38,8 @@ return {
 				formatting = {
 					format = function(entry, vim_item)
 						-- Show source name
+						vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+
 						vim_item.menu = ({
 							nvim_lsp = "[LSP]",
 							vsnip = "[Snippet]",

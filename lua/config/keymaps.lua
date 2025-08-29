@@ -10,6 +10,8 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 --
 vim.keymap.set("n", "U", "<C-r>")
 
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
+
 -- Swap between split buffers
 vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
 vim.keymap.set("n", "<C-Right>", ":wincmd l<CR>")

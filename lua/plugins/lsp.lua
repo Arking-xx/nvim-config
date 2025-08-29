@@ -16,6 +16,7 @@ return {
 				"html",
 				"emmet_ls",
 				"pyright", -- Add pyright here too
+				"tailwindcss",
 			},
 		})
 
@@ -28,7 +29,7 @@ return {
 		-- Common on_attach function for all LSP servers
 		local on_attach = function(client, bufnr)
 			-- Enable completion triggered by <c-x><c-o>
-			vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+			-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 			-- Key mappings for LSP functionality
 			local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -40,6 +41,21 @@ return {
 			vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 		end
+
+
+
+		lspconfig.tailwindcss.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = {
+				"html",
+				"css",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+			},
+		})
 
 		-- Lua LSP
 		lspconfig.lua_ls.setup({
@@ -109,7 +125,7 @@ return {
 		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			filetypes = { "html", "ejs" },
+			filetypes = { "html" },
 		})
 
 		-- Emmet LSP
