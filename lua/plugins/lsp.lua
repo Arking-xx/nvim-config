@@ -6,7 +6,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
-		-- Set up Mason
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -15,7 +14,7 @@ return {
 				"ts_ls",
 				"html",
 				"emmet_ls",
-				"pyright", -- Add pyright here too
+				"pyright",
 				"tailwindcss",
 			},
 		})
@@ -28,9 +27,6 @@ return {
 
 		-- Common on_attach function for all LSP servers
 		local on_attach = function(client, bufnr)
-			-- Enable completion triggered by <c-x><c-o>
-			-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 			-- Key mappings for LSP functionality
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -125,19 +121,63 @@ return {
 		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			filetypes = { "html" },
+			filetypes = { "html", "templ" },
+			init_options = {
+				configurationSection = { "html", "css", "javascript", "typescript" },
+				embeddedLanguages = {
+					css = true,
+					javascript = true,
+					typescript = true
+				},
+				provideFormatter = true
+			}
 		})
 
-		-- Emmet LSP
+
+		-- -false- Emmet LSP
 		lspconfig.emmet_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = {
 				"html",
 				"css",
+				"javascript",
 				"javascriptreact",
+				"typescript",
 				"typescriptreact",
 			},
+			init_options = {
+				html = {
+					options = {
+						["output.selfClosingStyle"] = "xhtml"
+					},
+				},
+				typescript = {},
+				javascript = {
+					options = {
+						["output.selfClosingStyle"] = "xhtml"
+					},
+				},
+				jsx = {
+					options = {
+						["output.selfClosingStyle"] = "xhtml",
+						["markup.attributes"] = {
+							["class*"] = "className",
+							["for"] = "htmlFor"
+						}
+					}
+				},
+				typescriptreact = {
+					options = {
+						["output.selfClosingStyle"] = "xhtml"
+					},
+				},
+				javascriptreact = {
+					options = {
+						["output.selfClosingStyle"] = "xhtml"
+					},
+				},
+			}
 		})
 
 		-- Global diagnostics configuration
@@ -167,10 +207,10 @@ return {
 		})
 
 		-- Define diagnostic signs
-		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		-- end
 	end,
 }

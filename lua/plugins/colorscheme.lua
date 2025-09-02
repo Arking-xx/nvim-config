@@ -1,27 +1,31 @@
--- ~/.config/nvim/lua/plugins/colorscheme.lua
 return {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,          -- Load immediately
-		priority = 1000,       -- Load before other plugins
-		opts = {
-			style = "moon",      -- Preferred style: "storm", "moon", "night", or "day"
-			transparent = false, -- Set to true for transparent background
-			terminal_colors = true, -- Enable terminal colors
-			styles = {
-				comments = { italic = true },
-				keywords = { italic = true },
-				functions = {},
-				variables = {},
-				sidebars = "dark", -- Style for sidebars
-				floats = "dark", -- Style for floating windows
-			},
-			day_brightness = 0.3, -- Brightness for "day" style (0 to 1)
-			dim_inactive = false, -- Dim inactive windows
-			lualine_bold = false, -- Bold section headers in lualine
-		},
+		"navarasu/onedark.nvim",
+		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme tokyonight]]) -- Apply the colorscheme
+			require("onedark").setup({
+				style = "deep",
+				transparent = true,
+				highlights = {
+					CursorLine = { bg = "#444b5a" },
+					Visual ={ bg = "#505868" }, 
+					Comment = {fg = '#7c8'},
+					["@comment"] = { fg = "#7c8", fmt = "italic" },
+				},
+				diagnostics = {
+					darker = false,
+					undercurl = true,
+					background = false
+				},
+				code_style = {
+					comments = 'italic',
+					keywords = 'italic',
+					functions = 'italic',
+					strings = 'none',
+					variables = 'bold'
+				},
+			})
+			require("onedark").load()
 		end,
 	},
 	{
@@ -30,7 +34,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "tokyonight",
+					theme = "onedark",
 				},
 			})
 		end,

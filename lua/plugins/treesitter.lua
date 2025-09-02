@@ -6,7 +6,7 @@ return {
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 			configs.setup({
-				ensure_installed = { "lua", "vim", "javascript", "html", "css", "embedded_template" },
+				ensure_installed = { "lua", "vim", "javascript", "html", "css", "embedded_template", "html", "css", "tsx", "typescript" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -14,7 +14,7 @@ return {
 				textobjects = {
 					select = {
 						enable = true,
-						lookahead = true, -- Automatically jump to matching pair
+						lookahead = true,   -- Automatically jump to matching pair
 						keymaps = {
 							["ab"] = "@block.outer", -- Select outer block (e.g., <div>...</div>)
 							["ib"] = "@block.inner", -- Select inner block (content between tags)
@@ -22,7 +22,7 @@ return {
 					},
 					move = {
 						enable = true,
-						set_jumps = true, -- Add to jumplist for navigation
+						set_jumps = true,   -- Add to jumplist for navigation
 						goto_next_start = {
 							["]b"] = "@block.outer", -- Jump to next block start
 						},

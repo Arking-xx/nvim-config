@@ -17,7 +17,7 @@ vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
 vim.keymap.set("n", "<C-Right>", ":wincmd l<CR>")
 
 -- Save and quit current file quicker
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { silent = false })
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { silent = true })
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { silent = false })
 
 -- Little one from Primeagen to mass replace string in a file
@@ -60,6 +60,7 @@ vim.keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 
+vim.keymap.set("n", "<M-/>", "gcc", { remap = true })
 vim.api.nvim_create_autocmd(
 	"LspAttach",
 	{ --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer

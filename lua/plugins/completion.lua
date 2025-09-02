@@ -15,7 +15,6 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local lspkind = require("lspkind") -- Optional: for better icons
-
 			-- Ensure completeopt is set for nvim-cmp
 			vim.o.completeopt = "menu,menuone,noselect"
 
