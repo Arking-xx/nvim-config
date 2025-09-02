@@ -8,6 +8,8 @@ My neovim config base on [**LAZY PLUGINS**](https://github.com/folke/lazy.nvim)
 * Git – Required to download some dependencies. [Install Git based on your OS](https://git-scm.com/downloads).
 * [WezTerm](https://wezterm.org/index.html) – Needed if you want to enable image preview.
 * Nerdfont – Make sure to install a font from [Nerd font](https://www.nerdfonts.com/) for proper icon rendering.
+* ripgrep - for telescope
+  
 ___
   
 
